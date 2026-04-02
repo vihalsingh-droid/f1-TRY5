@@ -2,6 +2,16 @@
 <html>
 <head>
 <title>Mainpage</title>
+<style>body.light {
+  background-color: white;
+  color: black;
+}
+
+body.dark {
+  background-color: #121212;
+  color: white;
+}</style>
+	
 </head>
 
 <body>
@@ -35,24 +45,8 @@
 
 </div>
 
-<button onclick="darkMode()">Dark Mode</button>
-
-<script>
-function darkMode(){
-  document.body.style.backgroundColor = "black";
-  document.body.style.color = "white";
-}
-</script>
-
-
-<button onclick="lightMode()">Light Mode</button>
-
-<script>
-function lightMode(){
-  document.body.style.backgroundColor = "white";
-  document.body.style.color = "black";
-}
-</script>
+<button onclick="setLightMode()">Light Mode</button>
+<button onclick="setDarkMode()">Dark Mode</button>
 	
 
 <h1>What is Formula 1?</h1>
@@ -97,5 +91,32 @@ onmouseout="this.style.transform='scale(1)'">
   <p>RedBull is working overtime to return to the top , as Max has said if he doesnt get a Championship Winning car , he will leave RB by 2027.</p>
 
 </div>
+
+<script>
+// Apply saved theme immediately when page loads
+(function () {
+  let savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+  } else {
+    document.body.classList.add("light");
+  }
+})();
+
+// Functions for buttons
+function setDarkMode() {
+  document.body.classList.remove("light");
+  document.body.classList.add("dark");
+  localStorage.setItem("theme", "dark");
+}
+
+function setLightMode() {
+  document.body.classList.remove("dark");
+  document.body.classList.add("light");
+  localStorage.setItem("theme", "light");
+}
+</script>
+
 </body>
 </html>
