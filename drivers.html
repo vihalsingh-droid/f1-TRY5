@@ -2,6 +2,19 @@
 <html>
 <head>
 <title>F1 Drivers</title>
+<style>
+body.light {
+  background-color: white;
+  color: black;
+}
+
+body.dark {
+  background-color: #121212;
+  color: white;
+}
+  
+</style>
+  
 </head>
 
 <body bgcolor="lightgray">
@@ -35,6 +48,10 @@ Standings
 
 
 </div>
+
+<button onclick="setLightMode()">Light Mode</button>
+<button onclick="setDarkMode()">Dark Mode</button>
+  
 
 <h2 align="center">🏎️ F1 Drivers</h2>
 
@@ -270,5 +287,32 @@ Standings
   </div>
 
 </div>
+
+<script>
+// Apply saved theme immediately when page loads
+(function () {
+  let savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+  } else {
+    document.body.classList.add("light");
+  }
+})();
+
+// Functions for buttons
+function setDarkMode() {
+  document.body.classList.remove("light");
+  document.body.classList.add("dark");
+  localStorage.setItem("theme", "dark");
+}
+
+function setLightMode() {
+  document.body.classList.remove("dark");
+  document.body.classList.add("light");
+  localStorage.setItem("theme", "light");
+}
+</script>
+  
 </body>
 </html>
