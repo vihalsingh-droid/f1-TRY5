@@ -3,26 +3,87 @@
 <head>
   <title>F1 Reaction Game</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
   <style>
     body {
       background: #121212;
       color: white;
       text-align: center;
-      font-family: Arial;
+      font-family: 'Orbitron', sans-serif;
+    }
 
-  font-family: 'Orbitron', sans-serif;
-}
+    /* SIDEBAR */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 220px;
+      height: 100%;
+      background: linear-gradient(180deg, #111, #000);
+      padding-top: 20px;
+      box-shadow: 5px 0 15px rgba(0,0,0,0.7);
+    }
 
+    .sidebar h2 {
+      text-align: center;
+      color: #ff0000;
+      margin-bottom: 30px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px 20px;
+      color: white;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .sidebar a:hover {
+      background: #ff0000;
+      padding-left: 30px;
+    }
+
+    .sidebar a.active {
+      background: #ff0000;
+    }
+
+    /* MAIN */
+    .main {
+      margin-left: 220px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 40px;
+      letter-spacing: 4px;
+      text-shadow: 0 0 10px red;
+    }
+
+    /* INSTRUCTIONS */
+    .instructions {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 15px;
+      background: #1e1e1e;
+      border-radius: 10px;
+      box-shadow: 0 0 10px black;
+      line-height: 1.5;
+    }
+
+    /* LIGHTS */
     .lights {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 15px;
       margin: 40px;
     }
 
     .light {
-      width: 50px;
-      height: 50px;
+      width: 55px;
+      height: 55px;
       background: #550000;
       border-radius: 50%;
       transition: background 0.2s, box-shadow 0.2s;
@@ -30,76 +91,56 @@
 
     .light.on {
       background: red;
-      box-shadow: 0 0 20px red;
+      box-shadow: 0 0 25px red;
     }
 
+    /* CLICK AREA */
     #clickArea {
       margin: 20px auto;
-      width: 200px;
-      height: 100px;
-      line-height: 100px;
+      width: 220px;
+      height: 110px;
+      line-height: 110px;
       border: 2px solid white;
       cursor: pointer;
       user-select: none;
+      border-radius: 10px;
+      transition: 0.2s;
+    }
+
+    #clickArea:hover {
+      background: #222;
     }
 
     .ready {
-      background: green;
+      background: lime;
       color: black;
       font-weight: bold;
+      box-shadow: 0 0 20px lime;
     }
 
+    /* TABLE */
     table {
       margin: auto;
       margin-top: 30px;
       border-collapse: collapse;
+      width: 300px;
+      background: #1a1a1a;
+      box-shadow: 0 0 10px black;
     }
 
     td, th {
-      border: 1px solid white;
-      padding: 8px;
+      border: 1px solid #444;
+      padding: 10px;
     }
-  
-  /* SIDEBAR */
-.sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 220px;
-  height: 100%;
-  background: linear-gradient(180deg, #111, #000);
-  padding-top: 20px;
-  box-shadow: 5px 0 15px rgba(0,0,0,0.7);
-}
 
-.sidebar h2 {
-  text-align: center;
-  color: #ff0000;
-  margin-bottom: 30px;
-}
+    th {
+      background: #ff0000;
+    }
 
-/* NAV LINKS */
-.sidebar a {
-  display: block;
-  padding: 15px 20px;
-  color: white;
-  text-decoration: none;
-  transition: 0.2s;
-  font-size: 16px;
-}
+    tr:hover {
+      background: #222;
+    }
 
-/* HOVER EFFECT */
-.sidebar a:hover {
-  background: #ff0000;
-  color: white;
-  padding-left: 30px;
-}
-
-/* MAIN CONTENT SHIFT */
-.main {
-  margin-left: 220px;
-  padding: 20px;
-}
   </style>
 </head>
 
@@ -109,13 +150,23 @@
   <h2>F1 Hub</h2>
 
   <a href="index.html"> Home</a>
+  <a href="race-page.html"> Race Page</a>
   <a href="drivers.html"> Drivers</a>
   <a href="standings.html"> Standings</a>
-  <a href="reaction.html">Reaction Game</a>
-   <a href="About_The_Creator.html">About Me</a>
+  <a href="reaction.html" class="active">Reaction Game</a>
+  <a href="About_The_Creator.html">About Me</a>
 </div>
 
+<div class="main">
+
 <h1>F1 Reaction Test</h1>
+
+<div class="instructions">
+  <p>🏁 Wait for all 5 red lights to turn off.</p>
+  <p>⚡ Click as FAST as possible when they go out.</p>
+  <p>❌ Click too early = False Start!</p>
+  <p>🌍 Your score goes to the global leaderboard.</p>
+</div>
 
 <div class="lights">
   <div class="light" id="l1"></div>
@@ -125,29 +176,26 @@
   <div class="light" id="l5"></div>
 </div>
 
-	<div class="main">
-  <!-- your existing content here -->
-
-
 <div id="clickArea">Wait...</div>
 
-<h2>Leaderboard</h2>
+<h2>🏆 Leaderboard</h2>
+
 <table>
   <thead>
-    <tr><th>Name</th><th>Time</th></tr>
+    <tr><th>Name</th><th>Time (s)</th></tr>
   </thead>
   <tbody id="board"></tbody>
 </table>
 
 <script>
-const URL = "https://script.google.com/macros/s/AKfycbxjy3uO5UnXoeAjgdjIYQtKef4gnmJCj_ZikxW14IM1At12IfPqL6YyF3Fg6soNkF2M1g/exec"; // 🔥 PUT YOUR GOOGLE SCRIPT URL HERE
+const URL = "https://script.google.com/macros/s/AKfycbxjy3uO5UnXoeAjgdjIYQtKef4gnmJCj_ZikxW14IM1At12IfPqL6YyF3Fg6soNkF2M1g/exec";
 
 let lights = [1,2,3,4,5].map(i => document.getElementById("l"+i));
 let clickArea = document.getElementById("clickArea");
 let board = document.getElementById("board");
 
 let startTime = 0;
-let gameState = "idle"; // idle, waiting, ready
+let gameState = "idle";
 
 function sleep(ms){
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -158,20 +206,16 @@ async function startGame(){
   clickArea.innerText = "Wait...";
   clickArea.classList.remove("ready");
 
-  // reset lights
   lights.forEach(l => l.classList.remove("on"));
 
-  // smooth lights ON
   for(let i = 0; i < lights.length; i++){
     lights[i].classList.add("on");
     await sleep(400);
   }
 
-  // random delay (real F1 feel)
   let randomDelay = Math.random() * 2000 + 500;
   await sleep(randomDelay);
 
-  // LIGHTS OUT
   lights.forEach(l => l.classList.remove("on"));
 
   clickArea.innerText = "CLICK!";
@@ -183,7 +227,6 @@ async function startGame(){
 
 clickArea.onclick = async function(){
 
-  // ❌ false start
   if(gameState === "waiting"){
     clickArea.innerText = "❌ False Start!";
     gameState = "idle";
@@ -210,14 +253,12 @@ clickArea.onclick = async function(){
   loadData();
 };
 
-// restart
 clickArea.addEventListener("click", function(){
   if(gameState === "idle" && clickArea.innerText === "Restart"){
     startGame();
   }
 });
 
-// load leaderboard
 async function loadData(){
   let res = await fetch(URL);
   let data = await res.json();
@@ -241,12 +282,12 @@ async function loadData(){
   });
 }
 
-// auto refresh leaderboard
 setInterval(loadData, 3000);
 
 startGame();
 loadData();
 </script>
+
 </div>
 </body>
 </html>
