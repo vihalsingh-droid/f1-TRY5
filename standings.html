@@ -4,8 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>F1 2026 Standings</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
 <style>
-  body {
+body {
   font-family: 'Orbitron', sans-serif;
 }
 
@@ -19,75 +22,80 @@ body.dark {
   color: white;
 }
 
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #121212;
-    color: white;
-    margin: 0;
-    padding: 20px;
-  }
+/* REMOVE duplicate body conflict */
+body {
+  background-color: #121212;
+  color: white;
+  margin: 0;
+  padding: 20px;
+}
 
-  h1 {
-    text-align: center;
-    color: #ff0000; /* F1-style accent */
-    margin-bottom: 20px;
-  }
+/* TITLE */
+h1 {
+  text-align: center;
+  color: #ff0000;
+  margin-bottom: 20px;
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px red;
+}
 
-  table {
-    width: 90%;
-    margin: auto;
-    border-collapse: collapse;
-    box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
-  }
+/* TABLE */
+table {
+  width: 90%;
+  margin: auto;
+  border-collapse: collapse;
+  box-shadow: 0px 0px 20px rgba(0,0,0,0.8);
+  border-radius: 10px;
+  overflow: hidden;
+}
 
-  th, td {
-    padding: 12px 15px;
-    text-align: center;
-  }
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+}
 
-  th {
-    background: #1e1e1e;
-    color: #fff;
-    text-transform: uppercase;
-  }
+th {
+  background: #1e1e1e;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
 
-  tr {
-    transition: transform 0.2s, background 0.2s;
-  }
+tr {
+  transition: transform 0.2s, background 0.2s;
+}
 
-  tr:hover {
-    transform: scale(1.02);
-    background: rgba(255,255,255,0.1);
-  }
+tr:hover {
+  transform: scale(1.02);
+  background: rgba(255,255,255,0.1);
+}
 
-  /* Team colors for rows */
-  .redbull { background-color: #1e2a78; color: white; }
-  .ferrari { background-color: #dc0000; color: white; }
-  .mercedes { background-color: #00d2be; color: white; }
-  .mclaren { background-color: #ff8700; color: black; }
-  .williams { background-color: #005aff; color: white; }
-  .racingbulls { background-color: white; color: black; }
-  .astonmartin { background-color: #006f62; color: white; }
-  .haas { background-color: #1c1c1c; color: white; }
-  .alpine { background-color: #0090ff; color: white; }
-  .audi { background-color: #bb0a30; color: white; }
-  .cadillac { background-color: #b5b5b5; color: black; }
+/* TEAM COLORS */
+.redbull { background-color: #1e2a78; }
+.ferrari { background-color: #dc0000; }
+.mercedes { background-color: #00d2be; }
+.mclaren { background-color: #ff8700; color: black; }
+.williams { background-color: #005aff; }
+.racingbulls { background-color: white; color: black; }
+.astonmartin { background-color: #006f62; }
+.haas { background-color: #1c1c1c; }
+.alpine { background-color: #0090ff; }
+.audi { background-color: #bb0a30; }
+.cadillac { background-color: #b5b5b5; color: black; }
 
-  td.team {
-    font-weight: bold;
-  }
+td.team {
+  font-weight: bold;
+}
 
-  td.points {
-    font-size: 1.1em;
-  }
+td.points {
+  font-size: 1.1em;
+  font-weight: bold;
+}
 
-  /* Responsive */
-  @media (max-width: 700px){
-    table, th, td {
-      font-size: 14px;
-    }
-  }
+/* TOP 3 GLOW */
+tr:nth-child(1) { box-shadow: 0 0 15px gold inset; }
+tr:nth-child(2) { box-shadow: 0 0 10px silver inset; }
+tr:nth-child(3) { box-shadow: 0 0 10px bronze inset; }
+
 /* SIDEBAR */
 .sidebar {
   position: fixed;
@@ -104,219 +112,234 @@ body.dark {
   text-align: center;
   color: #ff0000;
   margin-bottom: 30px;
+  font-weight: 900;
+  letter-spacing: 2px;
 }
 
-/* NAV LINKS */
 .sidebar a {
   display: block;
   padding: 15px 20px;
   color: white;
   text-decoration: none;
   transition: 0.2s;
-  font-size: 16px;
 }
 
-/* HOVER EFFECT */
 .sidebar a:hover {
   background: #ff0000;
-  color: white;
   padding-left: 30px;
 }
 
-/* MAIN CONTENT SHIFT */
+.sidebar a.active {
+  background: #ff0000;
+}
+
+/* MAIN */
 .main {
   margin-left: 220px;
   padding: 20px;
 }
 
-  
+/* RESPONSIVE */
+@media (max-width: 700px){
+  table, th, td {
+    font-size: 14px;
+  }
+}
+
 </style>
 </head>
 <body>
-
 
 <div class="sidebar">
   <h2>F1 Hub</h2>
 
   <a href="index.html"> Home</a>
+  <a href="race-page.html"> Race Page</a>
   <a href="drivers.html"> Drivers</a>
-  <a href="standings.html"> Standings</a>
+  <a href="standings.html" class="active"> Standings</a>
   <a href="reaction.html">Reaction Game</a>
-   <a href="About_The_Creator.html">About Me</a>
+  <a href="About_The_Creator.html">About Me</a>
 </div>
 
-  <div class="main">
+<div class="main">
 
 <button onclick="setLightMode()">Light Mode</button>
 <button onclick="setDarkMode()">Dark Mode</button>
-  
 
 <h1>F1 2026 Standings</h1>
 
+<!-- ⚠️ YOUR TABLE IS 100% SAME BELOW (ONLY ONE FIX APPLIED) -->
 <table>
-  <thead>
-    <tr>
-      <th>Pos</th>
-      <th>Driver</th>
-      <th>Team</th>
-      <th>Points</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Red Bull -->
-    <tr class="redbull">
-      <td>1</td>
-      <td>Max Verstappen</td>
-      <td class="team">Red Bull Racing</td>
-      <td class="points">12</td>
-    </tr>
-    <tr class="redbull">
-      <td>2</td>
-      <td>Isack Hadjar</td>
-      <td class="team">Red Bull Racing</td>
-      <td class="points">4</td>
-    </tr>
+<thead>
+<tr>
+<th>Pos</th>
+<th>Driver</th>
+<th>Team</th>
+<th>Points</th>
+</tr>
+</thead>
 
-    <!-- Ferrari -->
-    <tr class="ferrari">
-      <td>3</td>
-      <td>Charles Leclerc</td>
-      <td class="team">Ferrari</td>
-      <td class="points">49</td>
-    </tr>
-    <tr class="ferrari">
-      <td>4</td>
-      <td>Lewis Hamilton</td>
-      <td class="team">Ferrari</td>
-      <td class="points">41</td>
-    </tr>
+<tbody>
 
-    <!-- Mercedes -->
-    <tr class="mercedes">
-      <td>5</td>
-      <td>George Russell</td>
-      <td class="team">Mercedes</td>
-      <td class="points">63</td>
-    </tr>
-    <tr class="mercedes">
-      <td>6</td>
-      <td>Kimi Antonelli</td>
-      <td class="team">Mercedes</td>
-      <td class="points">72</td>
-    </tr>
+<tr class="redbull">
+<td>1</td>
+<td>Max Verstappen</td>
+<td class="team">Red Bull Racing</td>
+<td class="points">12</td>
+</tr>
 
-    <!-- McLaren -->
-    <tr class="mclaren">
-      <td>7</td>
-      <td>Lando Norris</td>
-      <td class="team">McLaren</td>
-      <td class="points">25</td>
-    </tr>
-    <tr class="mclaren">
-      <td>8</td>
-      <td>Oscar Piastri</td>
-      <td class="team">McLaren</td>
-      <td class="points">21</td>
-    </tr>
+<tr class="redbull">
+<td>2</td>
+<td>Isack Hadjar</td>
+<td class="team">Red Bull Racing</td>
+<td class="points">4</td>
+</tr>
 
-    <tr class="williams">
-      <td>9</td>
-      <td>Carlos Sainz</td>
-      <td class="team">Williams</td>
-      <td class="points">0</td>
-    </tr>
-    <tr class="williams">
-      <td>10</td>
-      <td>Alex Albon</td>
-      <td class="team">Williams</td>
-      <td class="points">0</td>
-    </tr>
-    
-    <tr class="racingbulls">
-      <td>11</td>
-      <td>Liam Lawson</td>
-      <td class="team"Racing Bulls</td>
-      <td class="points">10</td>
-    </tr>
-    <tr class="racingbulls">
-      <td>12</td>
-      <td>Arvid Lindblad</td>
-      <td class="team">Racing Bulls</td>
-      <td class="points">4</td>
-    </tr>
-   
-  <tr class="astonmartin">
-      <td>13</td>
-      <td>Fernando Alonso</td>
-      <td class="team">Aston Martin</td>
-      <td class="points">0</td>
-    </tr>
-    <tr class="astonmartin">
-      <td>14</td>
-      <td>Lance Stroll</td>
-      <td class="team">Aston Martin</td>
-      <td class="points">0</td>
-    </tr>
+<tr class="ferrari">
+<td>3</td>
+<td>Charles Leclerc</td>
+<td class="team">Ferrari</td>
+<td class="points">49</td>
+</tr>
 
+<tr class="ferrari">
+<td>4</td>
+<td>Lewis Hamilton</td>
+<td class="team">Ferrari</td>
+<td class="points">41</td>
+</tr>
 
-    <tr class="haas">
-      <td>15</td>
-      <td>Esteban Ocon</td>
-      <td class="team">Haas</td>
-      <td class="points">1</td>
-    </tr>
-    <tr class="haas">
-      <td>16</td>
-      <td>Oliver Bearman</td>
-      <td class="team">Haas</td>
-      <td class="points">17</td>
-    </tr>
+<tr class="mercedes">
+<td>5</td>
+<td>George Russell</td>
+<td class="team">Mercedes</td>
+<td class="points">63</td>
+</tr>
+
+<tr class="mercedes">
+<td>6</td>
+<td>Kimi Antonelli</td>
+<td class="team">Mercedes</td>
+<td class="points">72</td>
+</tr>
+
+<tr class="mclaren">
+<td>7</td>
+<td>Lando Norris</td>
+<td class="team">McLaren</td>
+<td class="points">25</td>
+</tr>
+
+<tr class="mclaren">
+<td>8</td>
+<td>Oscar Piastri</td>
+<td class="team">McLaren</td>
+<td class="points">21</td>
+</tr>
+
+<tr class="williams">
+<td>9</td>
+<td>Carlos Sainz</td>
+<td class="team">Williams</td>
+<td class="points">0</td>
+</tr>
+
+<tr class="williams">
+<td>10</td>
+<td>Alex Albon</td>
+<td class="team">Williams</td>
+<td class="points">0</td>
+</tr>
+
+<tr class="racingbulls">
+<td>11</td>
+<td>Liam Lawson</td>
+<td class="team">Racing Bulls</td>
+<td class="points">10</td>
+</tr>
+
+<tr class="racingbulls">
+<td>12</td>
+<td>Arvid Lindblad</td>
+<td class="team">Racing Bulls</td>
+<td class="points">4</td>
+</tr>
+
+<tr class="astonmartin">
+<td>13</td>
+<td>Fernando Alonso</td>
+<td class="team">Aston Martin</td>
+<td class="points">0</td>
+</tr>
+
+<tr class="astonmartin">
+<td>14</td>
+<td>Lance Stroll</td>
+<td class="team">Aston Martin</td>
+<td class="points">0</td>
+</tr>
+
+<tr class="haas">
+<td>15</td>
+<td>Esteban Ocon</td>
+<td class="team">Haas</td>
+<td class="points">1</td>
+</tr>
+
+<tr class="haas">
+<td>16</td>
+<td>Oliver Bearman</td>
+<td class="team">Haas</td>
+<td class="points">17</td>
+</tr>
 
 <tr class="alpine">
-      <td>17</td>
-      <td>Pierre Gasly</td>
-      <td class="team">Alpine</td>
-      <td class="points">15</td>
-    </tr>
-    <tr class="alpine">
-      <td>18</td>
-      <td>Franco Colapinto</td>
-      <td class="team">Alpine</td>
-      <td class="points">1</td>
-    </tr>
+<td>17</td>
+<td>Pierre Gasly</td>
+<td class="team">Alpine</td>
+<td class="points">15</td>
+</tr>
 
-    
+<tr class="alpine">
+<td>18</td>
+<td>Franco Colapinto</td>
+<td class="team">Alpine</td>
+<td class="points">1</td>
+</tr>
+
 <tr class="audi">
-      <td>19</td>
-      <td>Nico Hulkenberg</td>
-      <td class="team">Audi</td>
-      <td class="points">0</td>
-    </tr>
-    <tr class="audi">
-      <td>20</td>
-      <td>Gabriel Bortoleto</td>
-      <td class="team">Audi</td>
-      <td class="points">2</td>
-    </tr>
+<td>19</td>
+<td>Nico Hulkenberg</td>
+<td class="team">Audi</td>
+<td class="points">0</td>
+</tr>
 
-    <tr class="cadillac">
-      <td>21</td>
-      <td>Valteri Bottas</td>
-      <td class="team">Cadillac</td>
-      <td class="points">0</td>
-    </tr>
-    <tr class="cadillac">
-      <td>22</td>
-      <td>Sergio Perez</td>
-      <td class="team">Cadillac</td>
-      <td class="points">0</td>
-    </tr>
-    
-  </tbody>
+<tr class="audi">
+<td>20</td>
+<td>Gabriel Bortoleto</td>
+<td class="team">Audi</td>
+<td class="points">2</td>
+</tr>
+
+<tr class="cadillac">
+<td>21</td>
+<td>Valteri Bottas</td>
+<td class="team">Cadillac</td>
+<td class="points">0</td>
+</tr>
+
+<tr class="cadillac">
+<td>22</td>
+<td>Sergio Perez</td>
+<td class="team">Cadillac</td>
+<td class="points">0</td>
+</tr>
+
+</tbody>
 </table>
 
 <script>
-// Apply saved theme immediately when page loads
+// SAME SCRIPT
 (function () {
   let savedTheme = localStorage.getItem("theme");
 
@@ -327,7 +350,6 @@ body.dark {
   }
 })();
 
-// Functions for buttons
 function setDarkMode() {
   document.body.classList.remove("light");
   document.body.classList.add("dark");
@@ -340,6 +362,7 @@ function setLightMode() {
   localStorage.setItem("theme", "light");
 }
 </script>
-  </div>
+
+</div>
 </body>
 </html>
